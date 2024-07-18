@@ -1,18 +1,16 @@
-// Wait for the DOM to fully load before executing code
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('bookingModal');
     const closeModal = modal.querySelector('.close');
     const bookNowBtn = document.getElementById('bookNowBtn');
+    const reviewForm = document.getElementById('reviewForm');
+    const reviewsList = document.getElementById('reviewsList');
+    const bookingForm = document.getElementById('bookingForm');
 
     // Function to open modal
-    function openModal() {
-        modal.style.display = 'block';
-    }
+    const openModal = () => modal.style.display = 'block';
 
     // Function to close modal
-    function closeModalFunction() {
-        modal.style.display = 'none';
-    }
+    const closeModalFunction = () => modal.style.display = 'none';
 
     // Event listener for book now button to open modal
     bookNowBtn.addEventListener('click', openModal);
@@ -21,40 +19,33 @@ document.addEventListener('DOMContentLoaded', function() {
     closeModal.addEventListener('click', closeModalFunction);
 
     // Event listener to close modal if user clicks outside of it
-    window.addEventListener('click', function(event) {
+    window.addEventListener('click', event => {
         if (event.target == modal) {
-            modal.style.display = 'none';
+            closeModalFunction();
         }
     });
 
     // Handle form submission for reviews
-    const reviewForm = document.getElementById('reviewForm');
-    const reviewsList = document.getElementById('reviewsList');
-
-    reviewForm.addEventListener('submit', function(event) {
+    reviewForm.addEventListener('submit', event => {
         event.preventDefault(); // Prevent form submission
 
         // Get input values
-        var reviewerName = document.getElementById('reviewerName').value;
-        var reviewText = document.getElementById('review').value;
+        const reviewerName = document.getElementById('reviewerName').value;
+        const reviewText = document.getElementById('review').value;
 
         // Create review element
-        var reviewItem = document.createElement('div');
+        const reviewItem = document.createElement('div');
         reviewItem.classList.add('review-item');
-        reviewItem.innerHTML = '<strong>' + reviewerName + ':</strong> ' + reviewText;
+        reviewItem.innerHTML = `<strong>${reviewerName}:</strong> ${reviewText}`;
 
         // Append review to reviews list
         reviewsList.appendChild(reviewItem);
-
-        // Clear form inputs
         reviewForm.reset();
     });
 
     // Handle form submission for booking
-    const bookingForm = document.getElementById('bookingForm');
-
-    bookingForm.addEventListener('submit', function(booking) {
-        event.preventDefault(); // Prevent form submission
+    bookingForm.addEventListener('submit', event => {
+        event.preventDefault(); 
 
         // Get input values
         const name = document.getElementById('name').value;
@@ -62,32 +53,32 @@ document.addEventListener('DOMContentLoaded', function() {
         const date = document.getElementById('date').value;
         const time = document.getElementById('time').value;
 
-        // Display booking confirmation (for demonstration, adjust as needed)
-        alert('Booking confirmed');
+        // Prepare booking data
+        const bookingData = {
+            name,
+            service,
+            date,
+            time
+        };
 
-        // Close modal after booking
-        closeModalFunction();
+        // Make a fetch request to send booking data to the server
+        fetch('https://my-json-server.typicode.com/Samoei2000/nailbar/blob/main/db.json/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bookingData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Booking stored:', data);
+            alert('Booking confirmed');
+            // Close modal after booking
+            closeModalFunction();
+        })
+        .catch(error => {
+            console.error('Error storing booking:', error);
+            alert('Failed to confirm booking. Please try again.');
+        });
     });
-});
-
-// Make a fetch request to send booking data to the server
-fetch('http://localhost:3000/users', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(bookingData)
-})
-.then(response => response.json())
-.then(data => {
-    console.log('Booking stored:', data);
-    // Display confirmation to user (modify as needed)
-    alert('Booking confirmed for ' + name + ' for ' + service + ' on ' + date + ' at ' + time);
-    closeModalFunction(); // Close modal after successful booking
-})
-.catch(error => {
-    console.error('Error storing booking:', error);
-    // Handle error gracefully (e.g., display error message to user)
-    alert('Failed to confirm booking. Please try again.');
-});
 });
