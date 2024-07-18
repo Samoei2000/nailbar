@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Juliet Oma",
+      "style": "gum gel",
+      "date": "05/3/2024",
+      "Time": "14:30 PM"
+    },
+    {
+      "id": "2",
+      "name": "sandra kirwa",
+      "style": "acrylics",
+      "date": "06/3/2024",
+      "Time": "09:00 AM"
+    },
+    {
+      "id": "3",
+      "name": "sharon sade",
+      "service": "french tips",
+      "date": "08/3/2024",
+      "Time": "07:00 AM"
+    },
+    {
+      "id": "4",
+      "name": "Grace Funsho",
+      "service": "gel",
+      "date": "06/3/2024",
+      "Time": "11:00 AM"
+    }
+  ]}
+    
