@@ -2,9 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('bookingModal');
     const closeModal = modal.querySelector('.close');
     const bookNowBtn = document.getElementById('bookNowBtn');
-    const reviewForm = document.getElementById('reviewForm');
-    const reviewsList = document.getElementById('reviewsList');
     const bookingForm = document.getElementById('bookingForm');
+    
 
     // Function to open modal
     const openModal = () => modal.style.display = 'block';
@@ -25,23 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Handle form submission for reviews
-    reviewForm.addEventListener('submit', event => {
-        event.preventDefault(); // Prevent form submission
-
-        // Get input values
-        const reviewerName = document.getElementById('reviewerName').value;
-        const reviewText = document.getElementById('review').value;
-
-        // Create review element
-        const reviewItem = document.createElement('div');
-        reviewItem.classList.add('review-item');
-        reviewItem.innerHTML = `<strong>${reviewerName}:</strong> ${reviewText}`;
-
-        // Append review to reviews list
-        reviewsList.appendChild(reviewItem);
-        reviewForm.reset();
-    });
 
     // Handle form submission for booking
     bookingForm.addEventListener('submit', event => {
@@ -62,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         // Make a fetch request to send booking data to the server
-        fetch('https://my-json-server.typicode.com/Samoei2000/nailbar/blob/main/db.json/users', {
+        fetch('https://my-json-server.typicode.com/Samoei2000/nailbar/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

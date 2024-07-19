@@ -83,20 +83,7 @@ Don't miss out,book with us today
             Eldoret town
         </p>
     </section>
-    <section id="reviews">
-        <h2>Reviews</h2>
-        <form id="reviewForm">
-            <label for="reviewerName">Name:</label>
-            <input type="text" id="reviewerName" name="reviewerName" required>
-            <label for="review">Review:</label>
-            <textarea id="review" name="review" rows="4" required></textarea>
-            <button type="submit">Submit Review</button>
-        </form>
-        <div id="reviewsList">
-            <h3>Customer Reviews</h3>
-            <!-- Reviews will be dynamically added here -->
-        </div>
-    </section>
+   
 
     <div id="bookingModal">
         <div class="modal-content">
@@ -122,6 +109,27 @@ Don't miss out,book with us today
         </div>
     </div>
     
+    <div id="reviewModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Leave a Review</h2>
+            <form id="reviewForm">
+                <label for="reviewName">Name:</label>
+                <input type="text" id="reviewName" name="reviewName" required>
+                <label for="rating">Rating:</label>
+                <select id="rating" name="rating">
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                </select>
+                <label for="comments">Comments:</label>
+                <textarea id="comments" name="comments" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
     <footer>
         <div class="social-media">
             <a href="#"><img src="data:image/jpeg;base64,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" alt="Facebook"></a>

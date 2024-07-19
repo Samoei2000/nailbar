@@ -1,38 +1,51 @@
-
+/* Reset margin, padding, and box-sizing */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
+/* Set background color for the entire page */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #3f333c;
+    background-color: #a1859b; 
 }
 
+/* Navigation bar styling */
 header {
-    background-color: #333;
+    background-color: #333; 
     color: #fff;
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: background-color 0.3s; 
 }
 
+header:hover {
+    background-color: #444; 
+}
+
+/* Header logo styling */
 header .logo img {
     height: 40px;
     margin-right: 10px;
 }
 
+/* Navigation links styling */
 header nav a {
     color: #fff;
     text-decoration: none;
     margin: 0 10px;
+    transition: color 0.3s; 
 }
 
-/* Main styling */
+header nav a:hover {
+    color: #c484c0; 
+}
+
+/* Main content styling */
 main {
     padding: 20px;
 }
@@ -65,22 +78,25 @@ main .content ul li {
 main .content button {
     padding: 10px 20px;
     background-color: #333;
-    color: #c484c0;
     border: none;
     cursor: pointer;
 }
 
 main .content button:hover {
-    background-color: #555;
+    background-color: #b17a13;
 }
+
+/* Image container styling */
 .image-container img {
     display: block; 
     max-width: 600px; 
     height: 600px; 
 }
+
 .image-container {
     text-align: left; 
 }
+
 /* Section styling */
 section {
     padding: 20px;
@@ -88,7 +104,7 @@ section {
 }
 
 #about {
-    background-color: #a86ea3;
+    background-color: #a08498;
 }
 
 #about .service-images {
@@ -102,19 +118,15 @@ section {
 }
 
 #contact {
-    background-color: #f2f2f2;
-}
-
-#contact a {
-    color: #333;
+    background-color: #a997ad;
 }
 
 #location {
-    background-color: #797377;
+    background-color: #9f89a1;
 }
 
 #reviews {
-    background-color: #8f878f;
+    background-color: #3d2e19;
 }
 
 #reviews form label {
@@ -131,14 +143,14 @@ section {
 
 #reviews form button {
     padding: 10px 20px;
-    background-color: #333;
+    background-color: #423932;
     color: #fff;
     border: none;
     cursor: pointer;
 }
 
 #reviews form button:hover {
-    background-color: #555;
+    background-color: #493e32;
 }
 
 #reviews #reviewsList h3 {
@@ -205,13 +217,13 @@ section {
 
 #bookingModal .close:hover,
 #bookingModal .close:focus {
-    color: #000;
+    color: #c296c4;
 }
 
 /* Footer styling */
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: #a1889f;
+    color: #866886;
     text-align: center;
     padding: 10px 0;
 }
